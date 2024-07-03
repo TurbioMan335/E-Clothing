@@ -382,10 +382,16 @@ label {
     display: block;
 }
 
-iframe {
-    height: 50%;
-    position: absolute;
-    width: 50%;
+.map {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ajusta la altura según sea necesario */
+}
+
+.map iframe {
+    width: 80%; /* Ajusta el ancho según sea necesario */
+    height: 80%; /* Ajusta la altura según sea necesario */
 }
 
 footer {
@@ -504,7 +510,7 @@ footer {
 }
 
 .active {
-    color: var(--primary) !important;
+    color: #246BC5 !important;
 }
 
 .openOffCanvas {
@@ -756,7 +762,7 @@ footer {
 }
 
 .banner-cover {
-    background-image: url(../img/banner.png);
+    background-image: url(../img/LogoEmp.jpg);
     height: 100vh;
 }
 
@@ -793,12 +799,12 @@ footer {
         position: absolute;
         right: 60px;
         bottom: 60px;
-    }
+    }w
 }
 
 @media screen and (min-width: 1023px) {
     .banner-cover {
-        background-image: url(../img/banner-large.jpg);
+        background-image: url(../img/LogoEmp.jpg);
     }
 }
 
@@ -1282,3 +1288,4 @@ footer {
     text-align: left;
     padding: 0 0 0 1rem;
 }
+
