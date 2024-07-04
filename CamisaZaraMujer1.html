@@ -105,24 +105,12 @@
             <div class="column is-two-fifths-desktop">
                 <div class="slider" id="slider">
                     <div class="slider-img-container">
-                        <img src="img/CamisaZaraHombre.png" alt="camiseta" class="active slider-item">
-                    </div>
-                    <div class="slider-img-container">
-                        <img src="img/CamisaZaraHombre3.png" alt="camiseta" class="slider-item">
-                    </div>
-                    <div class="slider-img-container">
-                        <img src="img/CamisaZaraHombre2.png" alt="camiseta" class="slider-item">
-                    </div>
-                    <div class="slider-button-left slider-buttons" onclick="previus()">
-                        <i class="zmdi zmdi-chevron-left zmdi-hc-3x"></i>
-                    </div>
-                    <div class="slider-button-right slider-buttons" onclick="next()">
-                        <i class="zmdi zmdi-chevron-right zmdi-hc-3x"></i>
+                        <img src="img/CamisaZaraMujer.png" alt="camiseta" class="active slider-item">
                     </div>
                 </div>
             </div>
             <div class="column">
-                <h3 class="is-size-4">Camisa para Hombre Zara</h3>
+                <h3 class="is-size-4">Camisa para Mujer Zara</h3>
                 <div class="course-rating-container">
                     <div class="rating-stars" style="--rating: 86%">
                     </div>
@@ -138,22 +126,19 @@
                 <p class="has-text-grey"> <strong>Disponibilidad:</strong> En stock</p>
                 <p class="has-text-grey"><strong>Código del procuto: </strong>#56843265</p>
                 <form action="#" class="form-control">
-
                     <div class="columns is-multiline">
                         <div class="column is-one-third">   
-                        <div class="product-color">    
-                            <label for="color">Color:</label>
+                            <label for="color">color</label>
                             <select class="form-control-field" id="color">
-                                <option value="Blanco">Blanco</option>
-                                <option value="Rojo">Rojo</option>
-                                <option value="Negro">Negro</option>
+                                <option value="Rojo">Color Rojo</option>
+                                <option value="Blanco">Color Blanco</option>
+                                <option value="Negro">Color Negro</option>
                             </select>
-                        </div>
-                        </div>
 
+                        </div>
                         <div class="column is-one-third">
-                        <div class="product-size">    
-                            <label for="size">size:</label>
+
+                            <label for="size">size</label>
                             <select class="form-control-field" id="size">
                                 <option value="XS">XS</option>
                                 <option value="S">S</option>
@@ -161,7 +146,6 @@
                                 <option value="L">L</option>
                                 <option value="XL">XL</option>
                             </select>
-                        </div>
                         </div>
                         <div class="column is-one-third">
                             <label for="quality">Cantidad</label>
@@ -500,37 +484,7 @@
             }, 3000);
         }
 
-    </script>
 
-    <script>
-        // JavaScript para mostrar productos en el carrito
-        document.addEventListener('DOMContentLoaded', function() {
-            const productoGuardado = localStorage.getItem('producto');
-            if (productoGuardado) {
-                const producto = JSON.parse(productoGuardado);
-                agregarProductoAlCarrito(producto);
-            }
-        });
-
-        // Función para agregar un producto al carrito
-        function agregarProductoAlCarrito(producto) {
-            const carritoItem = document.createElement('div');
-            carritoItem.classList.add('product-item');
-            carritoItem.innerHTML = `
-                <div class="product-info">
-                    <h3 class="product-name">${producto.nombre}</h3>
-                    <p class="product-color">Color: <span>${producto.color}</span></p>
-                    <p class="product-size">Tamaño: <span>${producto.size}</span></p>
-                    <p class="product-price">Precio: $${producto.precio}</p>
-                    <p class="product-quantity">Cantidad: ${producto.cantidad}</p>
-                    <button class="remove-product">Eliminar</button>
-                </div>
-            `;
-            
-            // Agregar el producto al carrito
-            const carritoContainer = document.querySelector('.carrito-container');
-            carritoContainer.appendChild(carritoItem);
-        }
     </script>
 
 </body>

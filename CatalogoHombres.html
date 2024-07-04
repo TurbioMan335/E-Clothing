@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bulma.min.css">
+    <link rel="stylesheet" href="css/material-design-iconic-font.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>E-Clothing - Catálogo Hombres</title>
+    <link rel="icon" href="img/LogoRedondo.png" type="image/x-icon">
+    <style>
+        /* Estilos CSS específicos */
+        .catalog-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px;
+        }
+
+        .filters-container {
+            width: 250px;
+            padding: 20px;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .filters-container h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            text-align: center;
+            color: #333;
+        }
+
+        .filters-container > div {
+            margin-bottom: 20px;
+        }
+
+        .filters-container h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .filters-container ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .filters-container li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .filters-container label {
+            font-size: 14px;
+            color: #666;
+            margin-left: 5px;
+        }
+
+        .filters-container select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 14px;
+            color: #333;
+            background-color: #fff;
+        }
+
+        .products-container {
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .product-card {
+            width: calc(33.33% - 20px);
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            padding: 15px;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .product-info {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .product-info h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .product-info p {
+            font-size: 14px;
+            color: #888888;
+        }
+    </style>
+
+        <style>
+        .color-246BC5 {
+            color: #246BC5;
+        }
+        .color-black {
+            color: black;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- Barra de navegación y Banner -->
+    <header>
+        <nav class="navbar-top">
+            <ul class="navbar-top-ul">
+                <li class="navbar-top-item">
+                    <a href="login.html" class="navbar-top-links">Registro</a>
+                </li>
+                <li class="navbar-top-item">
+                    <a href="login.html" class="navbar-top-links">Iniciar sesión</a>
+                </li>
+                <li class="navbar-top-item">
+                    <a href="Carrito.html" class="navbar-top-links">
+                        <i class="zmdi zmdi-shopping-cart"></i> Carrito
+                        <!-- <i class="zmdi zmdi-chevron-down"></i> -->
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <nav class="navbar">
+            <header class="nabvar-mobile is-size-5-mobile">
+                <a class="navbar-mobile-link has-text-white" href="#" id="btn-mobile"><i class="zmdi zmdi-menu"></i></a>
+                <a class="navbar-mobile-link has-text-white" href="index.html">E-Clothing</a>
+                <a class="navbar-mobile-link has-text-white" href="#"><i class="zmdi zmdi-shopping-cart"></i> Vacio</a>
+            </header>
+            <nav class="nav-menu" id="mySidenav">
+                <form class="form-group " action="#">
+                    <div class="form-group-container">
+                        <span class="form-group-icon"><i class="zmdi zmdi-search"></i></span>
+                        <input type="text" class="form-group-input" placeholder="Buscar...">
+                    </div>
+                </form>
+
+                <a class="is-hidden-mobile brand is-uppercase has-text-weight-bold has-text-dark" href="index.html">
+                     <span class="color-246BC5">E-</span><span class="color-black">Clothing®</span>
+                </a>
+                <ul class="nav-menu-ul">
+                    <li class="nav-menu-item"><a href="index.html" class="nav-menu-link">Home</a></li>
+                    <li class="nav-menu-item" id="women">
+                        <a href="#" class="nav-menu-link link-submenu">Catalogo <i class="zmdi zmdi-chevron-down"></i> </a>
+                        <div class="container-sub-menu"> 
+
+                            <ul class="sub-menu-ul">
+                                <li class="nav-menu-item ">
+                                    <a class="nav-menu-link" href="CatalogoHombres.html">
+                                        <strong>Hombre</strong>
+                                        <i class="zmdi zmdi-chevron-down "></i>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="sub-menu-ul">
+                                <li class="nav-menu-item"><a class="nav-menu-link" href="CatalogoMujeres.html">
+                                        <strong>Mujer</strong>
+                                        <i class="zmdi zmdi-chevron-down "></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div> 
+                    </li>
+                    <li class="nav-menu-item"><a href="brand.html" class="nav-menu-link">La Marca</a></li>
+                    <li class="nav-menu-item"><a href="lookbook.html" class="nav-menu-link">Look Book</a></li>
+                    <li class="nav-menu-item"><a href="login.html" class="nav-menu-link">Sign in / Sign up</a></li>
+                    <li class="nav-menu-item"><a href="login.html" class="nav-menu-link">Perfil</a></li>
+                </ul>
+            </nav>
+        </nav>
+    </header>
+
+    <div class="banner banner-cover"></div>
+
+    <!-- Contenedor principal del catálogo -->
+    <div class="catalog-container">
+        <!-- Filtros -->
+        <div class="filters-container">
+            <h2>Filtros</h2>
+            <div>
+                <h3>Categorías</h3>
+                <ul>
+                    <h3>Parte Superior</h3>
+                    <li><input type="checkbox" id="shirts"> <label for="shirts">Camisas</label></li>
+                    <li><input type="checkbox" id="shirts"> <label for="shirts">Remeras</label></li>
+                    <li><input type="checkbox" id="shirts"> <label for="shirts">Polo Shirt</label></li>
+                    <li><input type="checkbox" id="shirts"> <label for="shirts">Deportivo</label></li>
+                    <br>
+                    <h3>Parte Inferior</h3>
+                    <li><input type="checkbox" id="pants"> <label for="pants">Pantalones</label></li>
+                    <br>
+                    <h3>Abrigos</h3>
+                    <li><input type="checkbox" id="jackets"> <label for="jackets">Chaquetas</label></li>
+                    <li><input type="checkbox" id="coats"> <label for="coats">Hoodies</label></li>
+                    <li><input type="checkbox" id="shirts"> <label for="shirts">Corta Vientos</label></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Ordenar por</h3>
+                <select id="sort-options">
+                    <option value="featured">Destacados</option>
+                    <option value="price-low-high">Precio: Menor a mayor</option>
+                    <option value="price-high-low">Precio: Mayor a menor</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Productos -->
+        <div class="products-container" id="products-container">
+            <!-- Aquí se generan dinámicamente los productos con JavaScript -->
+        </div>
+    </div>
+
+    <!-- Pie de página -->
+<footer class="footer">
+        <div class="container">
+            <div class="columns is-multiline">
+                <div class="column">
+                    <ul class="footer-ul">
+                        <li class="footer-item">
+                            <h3 class="has-text-weight-bold">Información</h3>
+                        </li>
+                        <li class="footer-item"><a class="footer-link" href="brand.html">La marca</a></li>
+                        <li class="footer-item"><a class="footer-link" href="sucursales.html">Ubicación</a></li>
+                        <li class="footer-item"><a class="footer-link" href="PrivacidadCookies.html">Privacidad y cookies</a></li>
+                    </ul>
+                </div>
+
+                <div class="column">
+                    <ul class="footer-ul">
+                        <li class="footer-item">
+                            <h3 class="has-text-weight-bold">Porqué comprar</h3>
+                        </li>
+                        <li class="footer-item"><a class="footer-link" href="https://www.fedex.com/es-py/home.html">Envios y retornos</a></li>
+                        <li class="footer-item"><a class="footer-link" href="https://www.fedex.com/es-py/home.html">Envios seguros</a></li>
+                        <li class="footer-item"><a class="footer-link" href="https://www.instagram.com">Comentarios</a></li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <ul class="footer-ul">
+                        <li class="footer-item">
+                            <h3 class="has-text-weight-bold">Tu cuenta</h3>
+                        </li>
+                        <li class="footer-item"><a class="footer-link" href="login.html">Iniciar sesión</a></li>
+                        <li class="footer-item"><a class="footer-link" href="login.html">Registro</a></li>
+                        <li class="footer-item"><a class="footer-link" href="Carrito.html">Ver carrito</a></li>
+                        <li class="footer-item"><a class="footer-link" href="#">Ver Perfil</a></li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <ul class="footer-ul">
+                        <li class="footer-item">
+                            <h3 class="has-text-weight-bold">Catalogo</h3>
+                        </li>
+                        <li class="footer-item"><a class="footer-link" href="CatalogoHombres.html">Catálogo para hombres</a></li>
+                        <li class="footer-item"><a class="footer-link" href="CatalogoMujeres.html">Catálogo para mujere</a></li>
+                    </ul>
+                </div>
+
+                <div class="column is-full">
+                    <div class="footer-socials">
+                        <a class="footer-solcials-link" href="https://www.facebook.com"><i class="zmdi zmdi-facebook"></i></a>
+                        <a class="footer-solcials-link" href="https://x.com/home?lang=es"><i class="zmdi zmdi-twitter"></i></a>
+                        <a class="footer-solcials-link" href="https://www.instagram.com"><i class="zmdi zmdi-instagram"></i></a>
+                        <a class="footer-solcials-link" href="https://www.pinterest.es"><i class="zmdi zmdi-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bar-top">
+            <div class="container">
+                
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script>
+        // Datos de ejemplo para los productos
+        const products = [
+            {
+                category: "Camisas",
+                name: "Camisa Zara",
+                price: 39.99,
+                image: "img/CamisaZaraHombre.png",
+                link: "producto.html"
+            },
+            {
+                category: "Remeras",
+                name: "Remera Puma",
+                price: 19.99,
+                image: "img/RemeraPuma.jpg",
+                link: "producto.html"
+            },
+            {
+                category: "Polo Shirts",
+                name: "Polo Negro",
+                price: 29.99,
+                image: "img/PoloTShirtPoloRalhp.jpg",
+                link: "producto.html"
+            },
+            {
+                category: "Deportivo",
+                name: "Remera Deportiva Nike",
+                price: 49.99,
+                image: "img/DeportivaNike.jpg",
+                link: "producto.html"
+            },
+            {
+                category: "Pantalones",
+                name: "Pantalon Armani",
+                price: 34.99,
+                image: "img/PantalonArmani.webp",
+                link: "producto.html"
+            },
+            {
+                category: "Chaquetas",
+                name: "Chaqueta de Cuero Armani",
+                price: 89.99,
+                image: "img/ChaquetaArmani.webp",
+                link: "producto.html"
+            },
+            {
+                category: "Hoodies",
+                name: "Hoodie Versace",
+                price: 44.99,
+                image: "img/HoodieVersace.jpeg",
+                link: "producto.html"
+            },
+            {
+                category: "Cortavientos",
+                name: "Corta Viento Nike",
+                price: 59.99,
+                image: "img/RompevientosNike.jpg",
+                link: "producto.html"
+            }
+        ];
+
+        const productsContainer = document.getElementById("products-container");
+
+        // Función para mostrar los productos en el contenedor
+        function displayProducts(productsToShow) {
+            productsContainer.innerHTML = "";
+            if (productsToShow.length === 0) {
+                productsContainer.innerHTML = "<p>No hay productos que coincidan con los filtros seleccionados.</p>";
+            } else {
+                productsToShow.forEach(product => {
+                    const card = `
+                        <div class="product-card">
+                            <img src="${product.image}" alt="${product.name}">
+                            <div class="product-info">
+                                <h3>${product.name}</h3>
+                                <p>$${product.price.toFixed(2)}</p>
+                                <a href="${product.link}" class="btn btn-primary">Ver producto</a>
+                            </div>
+                        </div>
+                    `;
+                    productsContainer.innerHTML += card;
+                });
+            }
+        }
+
+        // Mostrar todos los productos al cargar la página
+        displayProducts(products);
+
+        // Manejar cambios en los checkboxes de categorías
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkBox => {
+            checkBox.addEventListener('change', filterProducts);
+        });
+
+        // Manejar cambios en el select de ordenamiento
+        document.getElementById('sort-options').addEventListener('change', function () {
+            const filteredProducts = getFilteredProducts();
+            const sortedProducts = sortProducts(filteredProducts);
+            displayProducts(sortedProducts);
+        });
+
+        // Función para obtener los productos filtrados según las categorías seleccionadas
+        function getFilteredProducts() {
+            const checkedCategories = Array.from(document.querySelectorAll('input[type="checkbox"]:checked'))
+                                          .map(input => input.nextElementSibling.textContent);
+
+            if (checkedCategories.length === 0) {
+                return products;
+            }
+
+            return products.filter(product => checkedCategories.includes(product.category));
+        }
+
+        // Función para filtrar productos según las categorías seleccionadas
+        function filterProducts() {
+            const filteredProducts = getFilteredProducts();
+            const sortedProducts = sortProducts(filteredProducts);
+            displayProducts(sortedProducts);
+        }
+
+        // Función para ordenar productos según la opción seleccionada en el select
+        function sortProducts(productsToSort) {
+            const sortBy = document.getElementById('sort-options').value;
+
+            let sortedProducts = [...productsToSort];
+
+            if (sortBy === 'price-low-high') {
+                sortedProducts.sort((a, b) => a.price - b.price);
+            } else if (sortBy === 'price-high-low') {
+                sortedProducts.sort((a, b) => b.price - a.price);
+            }
+
+            return sortedProducts;
+        }
+
+    </script>
+</body>
+
+</html>

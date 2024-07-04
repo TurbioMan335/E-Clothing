@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/bulma.min.css">
     <link rel="stylesheet" href="css/material-design-iconic-font.css">
     <link rel="stylesheet" href="css/styles.css">
-    <title>E-Clohting - Ubicacion</title>
+    <title>E-Clothing - Home</title>
     <link rel="icon" href="img/LogoRedondo.png" type="image/x-icon">
 
     <style>
@@ -17,6 +17,57 @@
         }
         .color-black {
             color: black;
+        }
+    </style>
+
+    <style>
+        .title-cover {
+            font-size: 140px; 
+        }
+        .color-246BC5 {
+            color: #246BC5;
+        }
+    </style>
+
+    <style>
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        
+        .cart-item img {
+            width: 100px;
+            height: auto;
+            margin-right: 10px;
+        }
+        
+        .cart-item-details {
+            flex: 1;
+        }
+        
+        .cart-item-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        
+        .cart-item-actions button {
+            margin-top: 5px;
+        }
+
+        .notification {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        .notification.show {
+            display: block;
         }
     </style>
 
@@ -44,10 +95,10 @@
         <nav class="navbar">
             <header class="nabvar-mobile is-size-5-mobile">
                 <a class="navbar-mobile-link has-text-white" href="#" id="btn-mobile"><i class="zmdi zmdi-menu"></i></a>
-                <a class="navbar-mobile-link has-text-white" href="index.html">E-Clohting</a>
+                <a class="navbar-mobile-link has-text-white" href="index.html">E-Clothing</a>
                 <a class="navbar-mobile-link has-text-white" href="#"><i class="zmdi zmdi-shopping-cart"></i> Vacio</a>
             </header>
-            <nav class="nav-menu --nav-dark-light" id="mySidenav">
+            <nav class="nav-menu" id="mySidenav">
                 <form class="form-group " action="#">
                     <div class="form-group-container">
                         <span class="form-group-icon"><i class="zmdi zmdi-search"></i></span>
@@ -58,7 +109,7 @@
                 <a class="is-hidden-mobile brand is-uppercase has-text-weight-bold has-text-dark" href="index.html">
                      <span class="color-246BC5">E-</span><span class="color-black">Clothing®</span>
                 </a>
-                                <ul class="nav-menu-ul">
+                <ul class="nav-menu-ul">
                     <li class="nav-menu-item"><a href="index.html" class="nav-menu-link">Home</a></li>
                     <li class="nav-menu-item" id="women">
                         <a href="#" class="nav-menu-link link-submenu">Catalogo <i class="zmdi zmdi-chevron-down"></i> </a>
@@ -90,34 +141,19 @@
         </nav>
     </header>
     <!-- Banner -->
-    <div class="banner banner-second">
-        <div class="banner-container ">
-            <p><br></p>
-            <h1>E-Clohting</h1>
-            <h2>Estilo único para personas únicas</h2>
-        </div>
+    <div class="banner banner-cover"></div>
+
+    <div class="container">
+        <h1 class="title">Carrito de Compras</h1>
+        <div id="notification" class="notification"></div>
+        <div id="cart-items"></div>
+        <h2 class="subtitle">Total: $<span id="cart-total">0.00</span></h2>
+        <button class="button is-primary" onclick="proceedToCheckout()">Proceder al Pago</button>
+    </div>
+        <div class="carrito-container">
+        <!-- Aquí se añadirán dinámicamente los productos desde JavaScript -->
     </div>
 
-        <div class="container">
-        <div class="columns">
-            <div class="column is-half">
-                <img src="img/LogoEmp.jpg" alt="Logo de la Empresa">
-            </div>
-            <div class="column is-half">
-                <h3 class="has-text-weight-bold">CONTACTANOS</h3>
-                <p>
-                Telefono: +595 975 664545 <br> 
-                Correo Electronico: E-Clohting@gmail.com <br>
-                <h3>Recuerda que:</h3>
-                Somos una tienda de ropa online dedicada a proporcionar una experiencia de compra excepcional a nuestros clientes. Fundada por Victor Velazquez, nuestra Tienda se especializa en ofrecer las últimas tendencias y piezas atemporales que complementan cualquier guardarropa. Con un enfoque en la calidad y el diseño, seleccionamos cuidadosamente cada prenda para asegurarnos de que encuentres exactamente lo que necesitas para destacar.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <div class="map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d286.70690442322297!2d-55.86476525754782!3d-27.331048486432024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945795dc267eaceb%3A0x7ad02bfb3b4cf02d!2sJakare%20La%20Tienda-Encarnacion!5e0!3m2!1ses!2spy!4v1718981667105!5m2!1ses!2spy"></iframe>
-    </div>
 
 <footer class="footer">
         <div class="container">
@@ -181,6 +217,143 @@
         </div>
     </footer>
     <script src="js/main.js"></script>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadCartItems();
+        });
+
+        function loadCartItems() {
+            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotalElement = document.getElementById('cart-total');
+            let cartTotal = 0;
+
+            cartItemsContainer.innerHTML = '';
+            
+            cartItems.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                cartTotal += itemTotal;
+
+                const cartItemElement = document.createElement('div');
+                cartItemElement.classList.add('cart-item');
+
+                cartItemElement.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="cart-item-details">
+                        <h3>${item.name}</h3>
+                        <p>Color: ${item.color}</p>
+                        <p>Tamaño: ${item.size}</p>
+                        <p>Precio: $${item.price}</p>
+                        <p>Cantidad: ${item.quantity}</p>
+                    </div>
+                    <div class="cart-item-actions">
+                        <button class="button is-danger is-small" onclick="removeCartItem(${index})">Eliminar</button>
+                    </div>
+                `;
+
+                cartItemsContainer.appendChild(cartItemElement);
+            });
+
+            cartTotalElement.innerText = cartTotal.toFixed(2);
+        }
+
+        function addToCart() {
+            const productName = document.querySelector('h3').innerText;
+            const productPrice = parseFloat(document.querySelector('.price sup').nextSibling.nodeValue.trim());
+            const productColor = document.getElementById('color').value;
+            const productSize = document.getElementById('size').value;
+            const productQuantity = parseInt(document.querySelector('[type="number"]').value);
+            const productImage = document.querySelector('.slider-item.active').src;
+
+            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+            const newItem = {
+                name: productName,
+                price: productPrice,
+                color: productColor,
+                size: productSize,
+                quantity: productQuantity,
+                image: productImage
+            };
+
+            cartItems.push(newItem);
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+            showNotification('Producto agregado al carrito');
+            loadCartItems();
+        }
+
+        function showNotification(message) {
+            const notificationElement = document.getElementById('notification');
+            notificationElement.innerText = message;
+            notificationElement.classList.add('show');
+            setTimeout(() => {
+                notificationElement.classList.remove('show');
+            }, 3000);
+        }
+
+        function removeCartItem(index) {
+            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            cartItems.splice(index, 1);
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            loadCartItems();
+        }
+
+        function proceedToCheckout() {
+            alert('Procediendo al pago...');
+        }
+
+    </script>
+
+
+
+    <script>
+                
+        function next() {
+            // Código existente para siguiente diapositiva
+        }
+
+        function previus() {
+            // Código existente para diapositiva anterior
+        }
+
+        function addToCart() {
+            const productName = document.querySelector('h3').innerText;
+            const productPrice = parseFloat(document.querySelector('.price sup').nextSibling.nodeValue.trim());
+            const productColor = document.getElementById('color').value;
+            const productSize = document.getElementById('size').value;
+            const productQuantity = parseInt(document.querySelector('[type="number"]').value);
+            const productImage = document.querySelector('.slider-item.active').src;
+
+            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+            const newItem = {
+                name: productName,
+                price: productPrice,
+                color: productColor,
+                size: productSize,
+                quantity: productQuantity,
+                image: productImage
+            };
+
+            cartItems.push(newItem);
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+            showNotification('Producto agregado al carrito');
+        }
+
+        function showNotification(message) {
+            const notificationElement = document.getElementById('notification');
+            notificationElement.innerText = message;
+            notificationElement.classList.add('show');
+            setTimeout(() => {
+                notificationElement.classList.remove('show');
+            }, 3000);
+        }
+
+    </script>
 
 </body>
 
+</html>
